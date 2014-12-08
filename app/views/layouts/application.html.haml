@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %title JewtterV2
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    / ======================= NAV BAR ===========================
+    - if current_user.present?
+      %nav.navbar.navbar-inverse{:role => "navigation"}
+        .container-fluid
+          / Brand and toggle get grouped for better mobile display
+          .navbar-header
+            %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %a.navbar-brand ©Jewtter
+          / Collect the nav links, forms, and other content for toggling
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            %ul.nav.navbar-nav
+              - if current_user.id == @user.id
+                %li= link_to "Profile" , user_path(@user)
+                %li= link_to "Jewtter" , user_posts_path(@user)
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  Jewt
+                  %span.caret
+                %ul.dropdown-menu{:role => "menu"}
+                  - if current_user.id == @user.id
+                    %li= link_to "New Jewt", new_user_post_path(@user)
+            %ul.nav.navbar-nav.navbar-right
+              %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+        / /.navbar-collapse
+      / /.container-fluid
+    / ======================= FIN NAV BAR ===========================
+    = yield

@@ -1,0 +1,20 @@
+base: &base
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
+  host: localhost
+  timeout: 5000
+  username: postgres
+  password: alex
+
+development:
+  database: jewtterV2_dev
+  <<: *base
+
+test:
+  database: jewtterV2_test
+  <<: *base
+
+production:
+  database: jewtterV2_prod
+  <<: *base

@@ -1,0 +1,27 @@
+%h1.text-center.lead
+	= "Details of " + @post.name 
+.detail_div
+	%table.table.table-bordered.table-striped
+		%tr
+			%td.lead
+				= "Author"
+			%td.lead
+				= "Title"
+			%td.lead
+				= "Content"
+			%td.lead
+				= "Posted"
+			%td.lead
+				= "Last Update"
+
+		%tr
+			%td
+				= @post.user.name
+			%td
+				= @post.name
+			%td
+				= @post.text
+			%td
+				= @post.created_at.strftime("%d %b. %Y")
+			%td
+				= @post.updated_at.strftime("%d %b. %Y")

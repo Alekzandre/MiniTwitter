@@ -1,0 +1,23 @@
+%body
+	%h1.center_title
+		%small
+			= "Welcome to"
+			= "Jewtter"
+	.detail_div
+		- @posts.each do |post|
+			%table.table.table-bordered.table-striped
+				%tr
+					%td.lead.title_and_jewt
+						= link_to "Edit", edit_user_post_path(post, @user)
+					%td
+						= link_to post.name, user_post_path(post, @user)
+						= "written by "
+						= link_to post.user.name, user_path(@user)
+				%tr
+					%td.lead.lead.title_and_jewt
+						= "Del"
+					%td
+						= post.text
+				%tr
+					%td.lead.title_and_jewt
+						= link_to "Com", new_user_post_comment_path(@user, post)

@@ -1,0 +1,9 @@
+%body
+	%h1
+		%p.center_title
+			= "Welcome " + current_user.name
+	%h1
+		%p.center_title.small.lead
+			= "Your last jewt: "
+	%p.center_title.small
+		= '"' + @user.posts.last.text + '"'

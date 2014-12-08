@@ -1,0 +1,7 @@
+= simple_form_for [@user, @post] do |post|
+  .form_div
+    %p
+      = post.input :name, :label => false, :input_html => {:class => "form-control", :placeholder => "*Title"}
+    %p
+      = post.input :text, :label => false, :input_html => {:class => "form-control", :placeholder => "*Content", :rows => "3"}
+    %input.btn.btn-default{:type => "submit", :value => "Jewt"}/

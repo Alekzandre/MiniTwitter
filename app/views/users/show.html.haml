@@ -1,0 +1,28 @@
+%body
+	%h1.center_title
+		%small
+			= @user.name + "'s profile"
+	.detail_div
+		%table.table.table-bordered.table-striped
+			%tr
+				%td.lead
+					= "name"
+				%td.lead
+					= "email"
+				%td.lead
+					= "Jewtter since"
+				%td.lead
+					= "Last time online"
+				%td.lead
+					= "Number of jewts"
+			%tr
+				%td
+					= @user.name
+				%td
+					= @user.email
+				%td
+					= @user.created_at.strftime("%d %b. %Y")
+				%td
+					= @user.last_sign_in_at.strftime("%d %b. %Y")
+				%td
+					= current_user.posts.count
