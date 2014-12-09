@@ -6,6 +6,11 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		p "----------------------------------"
+		p params
+		p "----------------------------------"
 		@user = User.find(params[:id])
+		p @user
+
 	end
 end

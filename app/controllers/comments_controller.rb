@@ -6,10 +6,12 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@com = @user.post.comment.new params.require(:comment).permit(:text, :name)
-		if @com.save
-			redirect_to user_post_path(@user)
-		end
+		@com = @post.comments.new params.require(:comment).permit(:text)
+			if @com.save
+				redirect_to user_posts_path(@user)
+			else
+				render :new
+			end
 	end
 
 	private
@@ -23,4 +25,3 @@ class CommentsController < ApplicationController
 			# @user1 = User.find(param[:user_id])
 		end
 end
-

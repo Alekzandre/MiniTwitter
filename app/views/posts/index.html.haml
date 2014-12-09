@@ -8,16 +8,19 @@
 			%table.table.table-bordered.table-striped
 				%tr
 					%td.lead.title_and_jewt
-						= link_to "Edit", edit_user_post_path(post, @user)
+						= link_to "Edit", edit_user_post_path(@user, post)
 					%td
-						= link_to post.name, user_post_path(post, @user)
+						= link_to post.name, user_post_path(@user, post)
 						= "written by "
-						= link_to post.user.name, user_path(@user)
+						= link_to post.user.name, user_path(post.user_id)
 				%tr
 					%td.lead.lead.title_and_jewt
-						= "Del"
+						= link_to "Del", user_post_path(@user, post), :method => :delete, :data => {:confirm => 'Are you sure?'}
 					%td
 						= post.text
 				%tr
 					%td.lead.title_and_jewt
 						= link_to "Com", new_user_post_comment_path(@user, post)
+					%td
+						- post.comments.each do |com|
+							= com.text 
