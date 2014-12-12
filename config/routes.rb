@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users, except: [:new, :create, :edit, :update, :destroy] do
     resources :posts do
       resources :comments, only: [:new, :create, :edit, :update, :destroy]
+      end
+    post :follow , on: :member
+    post :unfollow, on: :member
     end
   end    
-end

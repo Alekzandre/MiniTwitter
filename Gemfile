@@ -15,7 +15,11 @@ gem 'simple_form'
 gem 'meta_request'
 gem 'devise'
 gem 'turbolinks'
+#upload photo
+gem "paperclip", "~> 4.2"
 #boostrap
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+#follow system
+gem "acts_as_follower"

@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates_uniqueness_of :name
   has_many :posts, :dependent => :destroy
+  acts_as_followable
+  acts_as_follower
  end

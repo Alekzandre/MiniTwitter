@@ -13,4 +13,25 @@ class UsersController < ApplicationController
 		p @user
 
 	end
+
+	def follow
+  		@user = User.find(params[:id])
+
+  		if current_user
+    		if current_user == @user
+      			flash[:error] = "You cannot follow yourself."
+    		else
+      			current_user.follow(@user)
+      			RecommenderMailer.new_follower(@user).deliver if @user.notify_new_follower
+      		end
+  		end
+	end
+
+	def unfollow
+  		@user = User.find(params[:id])
+
+  		if current_user
+    		current_user.stop_following(@user)
+  		end
+	end
 end

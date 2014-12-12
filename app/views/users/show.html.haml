@@ -2,6 +2,7 @@
 	%h1.center_title
 		%small
 			= @user.name + "'s profile"
+
 	.detail_div
 		%table.table.table-bordered.table-striped
 			%tr
@@ -15,6 +16,10 @@
 					= "Last time online"
 				%td.lead
 					= "Number of jewts"
+				%td.lead
+					= "follow"
+				%td.lead
+					= "followed by"
 			%tr
 				%td
 					= @user.name
@@ -26,3 +31,9 @@
 					= @user.last_sign_in_at.strftime("%d %b. %Y")
 				%td
 					= @user.posts.count
+				%td
+					- @user.all_following.each do | followed |
+						= followed.name
+				%td
+					- @user.user_followers.each do | follower |
+						= follower.name
