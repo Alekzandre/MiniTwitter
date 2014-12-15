@@ -20,10 +20,15 @@ class UsersController < ApplicationController
   		if current_user
     		if current_user == @user
       			flash[:error] = "You cannot follow yourself."
+      			redirect_to :back, :notice => "successfully followed someone..."
     		else
       			current_user.follow(@user)
-      			RecommenderMailer.new_follower(@user).deliver if @user.notify_new_follower
-      		end
+      			flash[:notice] = "You are now following."
+      			redirect_to :back, :notice => "successfully followed someone..."
+    		end
+  		else
+    		flash[:error] = "You must <a href='/users/sign_in'>login</a> to follow.".html_safe
+  			redirect_to :back, :notice => "successfully followed someone..."
   		end
 	end
 
@@ -32,6 +37,11 @@ class UsersController < ApplicationController
 
   		if current_user
     		current_user.stop_following(@user)
+    		flash[:notice] = "You are no longer following ."
+    		redirect_to :back, :notice => "successfully followed someone..."
+  		else
+    		flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow.".html_safe
+  			redirect_to :back, :notice => "successfully followed someone..."
   		end
 	end
 end

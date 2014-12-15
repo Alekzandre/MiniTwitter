@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :posts do
       resources :comments, only: [:new, :create, :edit, :update, :destroy]
       end
-    post :follow , on: :member
-    post :unfollow, on: :member
+    get :follow , on: :member
+    get :unfollow, on: :member
     end
   end    
