@@ -3,7 +3,11 @@
 		%p.center_title
 			= "Welcome " + current_user.name
 	%h1
-		%p.center_title.small.lead
-			= "Your last jewt: "
-	%p.center_title.small
-		= '"' + @user.posts.last.text + '"'
+		- if @user.posts.count != 0
+			%p.center_title.small.lead
+				= "Your last jewt: "
+			%p.center_title.small
+				= '"' + @user.posts.last.text + '"'
+		- else
+			%p.center_title.small
+				= "Ready to post your first jewt ?"
