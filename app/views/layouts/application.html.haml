@@ -34,6 +34,10 @@
                     %li= link_to "New Jewt", new_user_post_path(@user)
             %ul.nav.navbar-nav.navbar-right
               %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+            %form.navbar-form.navbar-right{:role => "search"}
+              .form-group
+                %input.form-control{:placeholder => "Search", :type => "text"}
+                  %button.btn.btn-default{:type => "submit"} Search
         / /.navbar-collapse
       / /.container-fluid
     / ======================= FIN NAV BAR ===========================

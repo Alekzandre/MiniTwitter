@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 	before_filter :load_user
 	
 	def index
-		@posts = Post.all
+		@posts = Post.all.order('updated_at DESC')
 	end
 	
 	def show
@@ -23,9 +23,6 @@ class PostsController < ApplicationController
 	end
 
 	def edit
-		p "----------------------------------------------"
-		p params
-		p "----------------------------------------------"
 		@post = Post.find(params[:id])
 	end
  	

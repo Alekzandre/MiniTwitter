@@ -17,11 +17,8 @@ class CommentsController < ApplicationController
 	private
 
 		def load_user
-			p "----------------------------------------------"
-			p @user = current_user
-			p "----------------------------------------------"
-			p @post = Post.find(params[:post_id])
-			p "----------------------------------------------"
-			# @user1 = User.find(param[:user_id])
+			@user = current_user
+ 			@post = Post.find(params[:post_id])
+
 		end
 end
