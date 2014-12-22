@@ -17,6 +17,7 @@ gem 'devise'
 gem 'turbolinks'
 #upload photo
 gem "paperclip", "~> 4.2"
+gem 'carrierwave'
 #boostrap
 gem "therubyracer"
 gem "less-rails"
